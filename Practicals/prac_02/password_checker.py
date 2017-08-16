@@ -36,7 +36,7 @@ def is_valid_password(password):
     count_digit = 0
     count_special = 0
 
-    if len(password) < 5 or len(password) > 15:
+    if len(password) < MIN_LENGTH or len(password) > MAX_LENGTH:
         return False
 
     for char in password:
@@ -49,10 +49,10 @@ def is_valid_password(password):
         elif char.isupper():
             count_upper += 1
 
-    if count_digit == 0 or count_lower == 0 or count_upper == 0 or count_special:
+    if count_digit == 0 or count_lower == 0 or count_upper == 0:
         return False
 
-    if SPECIAL_CHARS_REQUIRED and count_special <= 0:
+    if SPECIAL_CHARS_REQUIRED and count_special == 0:
         return False
 
     return True
